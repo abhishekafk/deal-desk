@@ -55,7 +55,8 @@ export default function EvalsPage() {
 
   const ranCount = Object.keys(results).length;
   const passCount = Object.values(results).filter(r => r.allPassed).length;
-  const all10Passed = ranCount === 10 && passCount === 10;
+  const totalCases = EVAL_CASES.length;
+  const allPassed = ranCount === totalCases && passCount === totalCases;
   const anyHardFailed = Object.values(results).some(r => r.isHard && !r.allPassed);
 
   return (
@@ -77,11 +78,11 @@ export default function EvalsPage() {
           >
             {isRunningAll ? (
               <>
-                <RotateCw className="w-3.5 h-3.5 animate-spin" /> Running all 10 cases...
+                <RotateCw className="w-3.5 h-3.5 animate-spin" /> Running all {totalCases} cases...
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 fill-current" /> Run all 10 evals
+                <Play className="w-3.5 h-3.5 fill-current" /> Run all {totalCases} evals
               </>
             )}
           </button>
@@ -98,17 +99,17 @@ export default function EvalsPage() {
                 Model & engine checks
               </h1>
               <p className="text-[13px] text-[#6B7488] mt-1 leading-snug">
-                10 automated test cases exercising the pricing pipeline, guardrails, and number allowlists.
+                {totalCases} automated test cases exercising the pricing pipeline, guardrails, and number allowlists.
               </p>
             </div>
 
             {/* Release Status Banner */}
             {ranCount > 0 && (
               <div>
-                {all10Passed ? (
+                {allPassed ? (
                   <div className="bg-[#1F9D6B]/10 border border-[#1F9D6B] text-[#1F9D6B] px-3.5 py-2 rounded-full flex items-center gap-2 text-[13px] font-semibold">
                     <CheckCircle2 className="w-4 h-4 text-[#1F9D6B]" />
-                    <span>RELEASE READY: 10/10 PASSED</span>
+                    <span>RELEASE READY: {totalCases}/{totalCases} PASSED</span>
                   </div>
                 ) : anyHardFailed ? (
                   <div className="bg-[#D64545]/10 border border-[#D64545] text-[#D64545] px-3.5 py-2 rounded-full flex items-center gap-2 text-[13px] font-semibold">
