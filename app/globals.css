@@ -1,39 +1,99 @@
 @import "tailwindcss";
 
 :root {
-  --background: #f8fafc;
-  --foreground: #0f172a;
-  --card: #ffffff;
-  --card-foreground: #0f172a;
-  --border: #e2e8f0;
-  --primary: #0f766e;
-  --primary-foreground: #ffffff;
+  --paper: #F3F5F9;
+  --card: #FFFFFF;
+  --ink: #121A2B;
+  --mute: #6B7488;
+  --line: #E3E7EF;
+  --take: #1F9D6B;
+  --counter: #D98A00;
+  --pass: #D64545;
+  --need-info: #8A93A6;
 }
 
 body {
-  background-color: #f8fafc;
-  color: #0f172a;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: 'Onest', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   -webkit-font-smoothing: antialiased;
+  margin: 0;
+  padding: 0;
 }
 
-/* Custom scrollbars for clean look */
-::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
-}
-::-webkit-scrollbar-track {
-  background: transparent;
-}
-::-webkit-scrollbar-thumb {
-  background: #cbd5e1;
-  border-radius: 3px;
-}
-::-webkit-scrollbar-thumb:hover {
-  background: #94a3b8;
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
 }
 
-/* Print CSS for S8 Proof Pack */
+/* Assistant & User Chat Bubble Shapes */
+.bubble-assistant {
+  background-color: var(--card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-radius: 20px;
+  border-top-left-radius: 6px;
+  max-width: 88%;
+  line-height: 1.45;
+}
+
+.bubble-user {
+  background-color: var(--ink);
+  color: #FFFFFF;
+  border-radius: 20px;
+  border-bottom-right-radius: 6px;
+  max-width: 88%;
+  line-height: 1.45;
+}
+
+/* Floating shadow for composer and sheets */
+.shadow-float {
+  box-shadow: 0 8px 30px rgba(18, 26, 43, 0.08);
+}
+
+.bottom-sheet {
+  border-top-left-radius: 28px;
+  border-top-right-radius: 28px;
+}
+
+/* Ruler animation orchestrator */
+@keyframes rulerSlide {
+  from {
+    transform: scaleX(0);
+    opacity: 0;
+  }
+  to {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+@keyframes pinDrop {
+  0% {
+    transform: translateY(-8px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.animate-ruler {
+  animation: rulerSlide 400ms ease-out forwards;
+  transform-origin: left;
+}
+
+.animate-pin {
+  animation: pinDrop 300ms ease-out 350ms forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-ruler, .animate-pin {
+    animation: none !important;
+  }
+}
+
+/* Print CSS for Proof Pack */
 @media print {
   body {
     background: #ffffff !important;
@@ -48,8 +108,7 @@ body {
   .proof-pack-container {
     max-width: 100% !important;
     margin: 0 !important;
-    padding: 24px !important;
-    box-shadow: none !important;
+    padding: 20px !important;
     border: none !important;
   }
 }

@@ -16,9 +16,7 @@ import {
   CheckCircle2, 
   XCircle, 
   ChevronDown, 
-  ChevronUp, 
-  AlertTriangle,
-  Sparkles
+  ChevronUp 
 } from 'lucide-react';
 
 export default function EvalsPage() {
@@ -61,47 +59,46 @@ export default function EvalsPage() {
   const anyHardFailed = Object.values(results).some(r => r.isHard && !r.allPassed);
 
   return (
-    <div className="min-h-screen bg-slate-50 py-8 px-4">
-      <div className="max-w-4xl mx-auto space-y-6">
+    <div className="min-h-screen bg-[#F3F5F9] text-[#121A2B] py-6 px-4">
+      <div className="max-w-2xl mx-auto space-y-5">
         {/* Top Navigation */}
         <div className="flex items-center justify-between">
           <Link
             href="/"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-teal-800 hover:text-teal-950 bg-white px-3 py-1.5 rounded-lg border border-slate-200 shadow-sm transition-colors"
+            className="inline-flex items-center gap-1.5 text-[13px] font-semibold text-[#6B7488] hover:text-[#121A2B] transition-colors py-1"
           >
-            <ArrowLeft className="w-3.5 h-3.5" /> Back to DealDesk
+            <ArrowLeft className="w-4 h-4" /> Back to chat
           </Link>
 
           <button
             onClick={handleRunAll}
             disabled={isRunningAll}
-            className="px-4 py-2 text-xs font-bold text-white bg-teal-700 hover:bg-teal-800 disabled:opacity-50 rounded-xl shadow-sm flex items-center gap-2 transition-colors"
+            className="px-4 py-2 text-[13px] font-semibold text-white bg-[#121A2B] hover:bg-[#1f2b45] disabled:opacity-50 rounded-full shadow-sm flex items-center gap-2 transition-colors min-h-[44px]"
           >
             {isRunningAll ? (
               <>
-                <RotateCw className="w-3.5 h-3.5 animate-spin" /> Running All 10 Cases...
+                <RotateCw className="w-3.5 h-3.5 animate-spin" /> Running all 10 cases...
               </>
             ) : (
               <>
-                <Play className="w-3.5 h-3.5 fill-current" /> Run All 10 Evals
+                <Play className="w-3.5 h-3.5 fill-current" /> Run all 10 evals
               </>
             )}
           </button>
         </div>
 
         {/* Page Header */}
-        <div className="bg-white p-6 sm:p-8 rounded-2xl border border-slate-200 shadow-sm space-y-3">
-          <div className="flex flex-wrap items-center justify-between gap-2">
+        <div className="bg-white rounded-[20px] p-5 border border-[#E3E7EF] space-y-3">
+          <div className="flex flex-wrap items-center justify-between gap-3">
             <div>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-teal-50 border border-teal-200 text-teal-800 text-xs font-semibold mb-2">
-                <ShieldCheck className="w-3.5 h-3.5 text-teal-700" />
-                Automated Verification Suite
-              </div>
-              <h1 className="text-2xl font-black text-slate-900 tracking-tight">
-                DealDesk Model & Engine Evaluation Suite
+              <span className="text-[11px] font-semibold text-[#6B7488] block mb-1">
+                Evaluation suite
+              </span>
+              <h1 className="text-[24px] font-semibold text-[#121A2B] tracking-tight">
+                Model & engine checks
               </h1>
-              <p className="text-xs text-slate-600 mt-1 max-w-2xl leading-relaxed">
-                Run the 10 core eval cases before every release. Each test exercises the live or demo pipeline and executes machine-checkable assertions on verdicts, flags, allowlists, and guardrails.
+              <p className="text-[13px] text-[#6B7488] mt-1 leading-snug">
+                10 automated test cases exercising the pricing pipeline, guardrails, and number allowlists.
               </p>
             </div>
 
@@ -109,18 +106,18 @@ export default function EvalsPage() {
             {ranCount > 0 && (
               <div>
                 {all10Passed ? (
-                  <div className="bg-emerald-50 border-2 border-emerald-400 text-emerald-900 px-4 py-2.5 rounded-xl flex items-center gap-2 text-sm font-bold shadow-sm">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600" />
+                  <div className="bg-[#1F9D6B]/10 border border-[#1F9D6B] text-[#1F9D6B] px-3.5 py-2 rounded-full flex items-center gap-2 text-[13px] font-semibold">
+                    <CheckCircle2 className="w-4 h-4 text-[#1F9D6B]" />
                     <span>RELEASE READY: 10/10 PASSED</span>
                   </div>
                 ) : anyHardFailed ? (
-                  <div className="bg-rose-50 border-2 border-rose-400 text-rose-900 px-4 py-2.5 rounded-xl flex items-center gap-2 text-xs font-bold shadow-sm">
-                    <XCircle className="w-5 h-5 text-rose-600" />
+                  <div className="bg-[#D64545]/10 border border-[#D64545] text-[#D64545] px-3.5 py-2 rounded-full flex items-center gap-2 text-[13px] font-semibold">
+                    <XCircle className="w-4 h-4 text-[#D64545]" />
                     <span>RELEASE BLOCKED: HARD CASE FAILED</span>
                   </div>
                 ) : (
-                  <div className="bg-amber-50 border border-amber-300 text-amber-900 px-4 py-2 rounded-xl text-xs font-bold">
-                    {passCount}/{ranCount} Cases Passed
+                  <div className="bg-[#D98A00]/10 border border-[#D98A00] text-[#D98A00] px-3.5 py-2 rounded-full text-[13px] font-semibold">
+                    {passCount}/{ranCount} cases passed
                   </div>
                 )}
               </div>
@@ -129,8 +126,8 @@ export default function EvalsPage() {
         </div>
 
         {/* Eval Cases Table */}
-        <div className="space-y-3">
-          {EVAL_CASES.map((c, idx) => {
+        <div className="space-y-2.5">
+          {EVAL_CASES.map((c) => {
             const res = results[c.id];
             const isRunning = runningCaseId === c.id;
             const isExpanded = expandedCaseId === c.id;
@@ -138,57 +135,57 @@ export default function EvalsPage() {
             return (
               <div
                 key={c.id}
-                className="bg-white rounded-xl border border-slate-200 shadow-sm overflow-hidden transition-all"
+                className="bg-white rounded-[20px] border border-[#E3E7EF] overflow-hidden"
               >
                 <div className="p-4 flex flex-wrap items-center justify-between gap-3">
                   <div className="flex items-center gap-3">
-                    <span className="w-8 h-8 rounded-lg bg-slate-100 text-slate-800 font-bold text-xs flex items-center justify-center shrink-0 border border-slate-200">
+                    <span className="w-7 h-7 rounded-full bg-[#F3F5F9] text-[#121A2B] font-semibold text-[11px] flex items-center justify-center shrink-0 border border-[#E3E7EF]">
                       {c.id}
                     </span>
                     <div>
                       <div className="flex items-center gap-2">
-                        <h3 className="font-bold text-sm text-slate-900">{c.title}</h3>
+                        <h3 className="font-semibold text-[15px] text-[#121A2B]">{c.title}</h3>
                         {c.isHard && (
-                          <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-rose-50 text-rose-700 border border-rose-200">
-                            Hard Case
+                          <span className="text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#D64545]/10 text-[#D64545] border border-[#D64545]/30">
+                            Hard case
                           </span>
                         )}
                       </div>
-                      <p className="text-xs text-slate-500 line-clamp-1 mt-0.5">
+                      <p className="text-[13px] text-[#6B7488] line-clamp-1 mt-0.5">
                         {c.input}
                       </p>
                     </div>
                   </div>
 
-                  <div className="flex items-center gap-2.5">
+                  <div className="flex items-center gap-2">
                     {res ? (
                       <span
-                        className={`text-xs font-bold px-2.5 py-1 rounded-full flex items-center gap-1.5 ${
+                        className={`text-[11px] font-semibold px-2.5 py-1 rounded-full flex items-center gap-1.5 ${
                           res.allPassed
-                            ? 'bg-emerald-50 text-emerald-800 border border-emerald-300'
-                            : 'bg-rose-50 text-rose-800 border border-rose-300'
+                            ? 'bg-[#1F9D6B]/10 text-[#1F9D6B] border border-[#1F9D6B]/30'
+                            : 'bg-[#D64545]/10 text-[#D64545] border border-[#D64545]/30'
                         }`}
                       >
                         {res.allPassed ? (
                           <>
-                            <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600" />
+                            <CheckCircle2 className="w-3.5 h-3.5 text-[#1F9D6B]" />
                             PASS ({res.assertions.length}/{res.assertions.length})
                           </>
                         ) : (
                           <>
-                            <XCircle className="w-3.5 h-3.5 text-rose-600" />
+                            <XCircle className="w-3.5 h-3.5 text-[#D64545]" />
                             FAIL
                           </>
                         )}
                       </span>
                     ) : (
-                      <span className="text-[11px] text-slate-400 italic">Not run yet</span>
+                      <span className="text-[11px] text-[#6B7488]">Not run</span>
                     )}
 
                     <button
                       onClick={() => handleRunCase(c.id)}
                       disabled={isRunning || isRunningAll}
-                      className="px-3 py-1.5 text-xs font-semibold text-teal-800 bg-teal-50 hover:bg-teal-100 border border-teal-200 rounded-lg transition-colors flex items-center gap-1"
+                      className="px-3 py-1.5 text-[11px] font-semibold text-[#121A2B] bg-[#F3F5F9] hover:bg-slate-200 border border-[#E3E7EF] rounded-full transition-colors flex items-center gap-1 min-h-[36px]"
                     >
                       {isRunning ? (
                         <RotateCw className="w-3 h-3 animate-spin" />
@@ -200,8 +197,8 @@ export default function EvalsPage() {
 
                     <button
                       onClick={() => setExpandedCaseId(isExpanded ? null : c.id)}
-                      className="p-1.5 text-slate-400 hover:text-slate-600 rounded-lg hover:bg-slate-100 transition-colors"
-                      title="View assertions & details"
+                      className="p-1.5 text-[#6B7488] hover:text-[#121A2B] rounded-full hover:bg-[#F3F5F9] transition-colors"
+                      title="View assertions"
                     >
                       {isExpanded ? <ChevronUp className="w-4 h-4" /> : <ChevronDown className="w-4 h-4" />}
                     </button>
@@ -210,44 +207,44 @@ export default function EvalsPage() {
 
                 {/* Expanded Details */}
                 {isExpanded && (
-                  <div className="px-4 pb-4 pt-2 border-t border-slate-100 bg-slate-50/50 space-y-3 text-xs">
+                  <div className="px-4 pb-4 pt-2 border-t border-[#E3E7EF] bg-[#F3F5F9]/50 space-y-3 text-[13px]">
                     <div>
-                      <span className="font-bold text-slate-700 block mb-0.5">Input Text:</span>
-                      <p className="p-2.5 bg-white rounded-lg border border-slate-200 text-slate-800 font-mono text-[11px]">
+                      <span className="font-semibold text-[#121A2B] block mb-0.5">Input text:</span>
+                      <p className="p-2.5 bg-white rounded-xl border border-[#E3E7EF] text-[#121A2B] font-mono text-[11px]">
                         {c.input}
                       </p>
                     </div>
 
                     <div>
-                      <span className="font-bold text-slate-700 block mb-0.5">Expected Behavior:</span>
-                      <p className="text-slate-600 leading-relaxed">{c.expected}</p>
+                      <span className="font-semibold text-[#121A2B] block mb-0.5">Expected behavior:</span>
+                      <p className="text-[#6B7488] leading-snug">{c.expected}</p>
                     </div>
 
                     {res && (
                       <div className="space-y-1.5">
-                        <span className="font-bold text-slate-700 block">
-                          Machine-Checkable Assertions:
+                        <span className="font-semibold text-[#121A2B] block">
+                          Machine-checkable assertions:
                         </span>
                         <div className="space-y-1">
                           {res.assertions.map((a, aIdx) => (
                             <div
                               key={aIdx}
-                              className={`p-2 rounded-lg border flex items-center justify-between ${
+                              className={`p-2 rounded-xl border flex items-center justify-between ${
                                 a.passed
-                                  ? 'bg-emerald-50/70 border-emerald-200 text-emerald-900'
-                                  : 'bg-rose-50 border-rose-200 text-rose-900'
+                                  ? 'bg-[#1F9D6B]/5 border-[#1F9D6B]/20 text-[#121A2B]'
+                                  : 'bg-[#D64545]/5 border-[#D64545]/20 text-[#D64545]'
                               }`}
                             >
                               <div className="flex items-center gap-2">
                                 {a.passed ? (
-                                  <CheckCircle2 className="w-3.5 h-3.5 text-emerald-600 shrink-0" />
+                                  <CheckCircle2 className="w-3.5 h-3.5 text-[#1F9D6B] shrink-0" />
                                 ) : (
-                                  <XCircle className="w-3.5 h-3.5 text-rose-600 shrink-0" />
+                                  <XCircle className="w-3.5 h-3.5 text-[#D64545] shrink-0" />
                                 )}
                                 <span className="font-mono text-[11px] font-medium">{a.name}</span>
                               </div>
-                              <span className="text-[10px] text-slate-500 font-medium">
-                                {a.message || (a.passed ? 'Assertion verified' : 'Failed assertion')}
+                              <span className="text-[11px] text-[#6B7488] font-medium">
+                                {a.message || (a.passed ? 'Verified' : 'Failed')}
                               </span>
                             </div>
                           ))}
@@ -255,10 +252,10 @@ export default function EvalsPage() {
 
                         {/* Raw Output Accordion */}
                         <div className="pt-2">
-                          <span className="font-bold text-slate-700 block mb-1">
-                            Raw Engine / Model Output:
+                          <span className="font-semibold text-[#121A2B] block mb-1">
+                            Raw engine output:
                           </span>
-                          <pre className="p-3 bg-slate-900 text-slate-100 rounded-lg overflow-x-auto text-[10px] font-mono leading-relaxed max-h-48">
+                          <pre className="p-3 bg-[#121A2B] text-slate-100 rounded-xl overflow-x-auto text-[10px] font-mono leading-relaxed max-h-48">
                             {JSON.stringify(res.rawOutput, null, 2)}
                           </pre>
                         </div>
