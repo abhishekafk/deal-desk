@@ -1,0 +1,98 @@
+[
+  {
+    "id": "glowleaf",
+    "name": "GlowLeaf Beauty",
+    "category": "beauty",
+    "reports_count": 8,
+    "verified_count": 8,
+    "last_report_date": "2026-09-14",
+    "payout_days": { "p25": 35, "median": 52, "p75": 70 },
+    "typical_reel_cash_inr": { "low": 4000, "high": 6500 },
+    "advance_paid_reports": 1,
+    "common_asks": ["usage rights 3-6 months"]
+  },
+  {
+    "id": "urbankart",
+    "name": "UrbanKart Fashion",
+    "category": "fashion",
+    "reports_count": 12,
+    "verified_count": 11,
+    "last_report_date": "2026-10-02",
+    "payout_days": { "p25": 20, "median": 28, "p75": 40 },
+    "typical_reel_cash_inr": { "low": 5000, "high": 8000 },
+    "advance_paid_reports": 7,
+    "common_asks": ["usage rights 3 months"]
+  },
+  {
+    "id": "zestify",
+    "name": "Zestify Foods",
+    "category": "food",
+    "reports_count": 6,
+    "verified_count": 5,
+    "last_report_date": "2026-08-20",
+    "payout_days": { "p25": 60, "median": 75, "p75": 110 },
+    "typical_reel_cash_inr": { "low": 3000, "high": 6000 },
+    "advance_paid_reports": 0,
+    "common_asks": ["usage rights 6 months", "story reshare"]
+  },
+  {
+    "id": "kaffeekart",
+    "name": "KaffeeKart Coffee",
+    "category": "food",
+    "reports_count": 15,
+    "verified_count": 15,
+    "last_report_date": "2026-10-09",
+    "payout_days": { "p25": 14, "median": 21, "p75": 30 },
+    "typical_reel_cash_inr": { "low": 3500, "high": 5500 },
+    "advance_paid_reports": 10,
+    "common_asks": []
+  },
+  {
+    "id": "bloombox",
+    "name": "BloomBox Subscriptions",
+    "category": "lifestyle",
+    "reports_count": 5,
+    "verified_count": 5,
+    "last_report_date": "2026-07-30",
+    "payout_days": { "p25": 30, "median": 45, "p75": 60 },
+    "typical_reel_cash_inr": { "low": 4000, "high": 7000 },
+    "advance_paid_reports": 2,
+    "common_asks": ["exclusivity 3 months"]
+  },
+  {
+    "id": "novafit",
+    "name": "NovaFit Wearables",
+    "category": "fitness",
+    "reports_count": 3,
+    "verified_count": 2,
+    "last_report_date": "2026-09-01",
+    "payout_days": null,
+    "typical_reel_cash_inr": null,
+    "advance_paid_reports": 0,
+    "common_asks": []
+  },
+  {
+    "id": "pixelpop",
+    "name": "PixelPop Gadgets",
+    "category": "tech",
+    "reports_count": 2,
+    "verified_count": 1,
+    "last_report_date": "2026-06-11",
+    "payout_days": null,
+    "typical_reel_cash_inr": null,
+    "advance_paid_reports": 0,
+    "common_asks": []
+  },
+  {
+    "id": "trailnest",
+    "name": "TrailNest Travel",
+    "category": "travel",
+    "reports_count": 0,
+    "verified_count": 0,
+    "last_report_date": "",
+    "payout_days": null,
+    "typical_reel_cash_inr": null,
+    "advance_paid_reports": 0,
+    "common_asks": []
+  }
+]
