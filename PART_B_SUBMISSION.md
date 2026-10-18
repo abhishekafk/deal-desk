@@ -167,7 +167,7 @@ During the creation and verification of DealDesk, the following prompts and auto
 - **Module:** `lib/llm.ts`
 - **Prompt Execution:**
   - Integrated Section 6 System Prompts 1, 2, and 3.
-  - Implemented server-side provider handler supporting `gemini`, `anthropic`, and `mock`.
+  - Implemented server-side provider handler supporting `groq`, `gemini`, `anthropic`, and `mock`.
   - Added input truncation to 2,000 characters and 20 checks/hr per-IP rate limiting.
   - Added Zod schemas for Extraction and Explanation with 1 retry before falling back to demo mode.
   - Built `lib/demoExtractor.ts` and `lib/templates.ts` to ensure the live link **never displays an error screen** if keys are missing or credits expire.
@@ -222,7 +222,7 @@ The DealDesk application is built with zero-config Next.js (App Router) and can 
    - Build Command: `next build`
    - Output Directory: `.next`
 3. Optional Environment Variables (in Vercel Project Settings):
-   - `LLM_PROVIDER`: `gemini` | `anthropic` | `mock` (Defaults to `mock` / Demo mode)
-   - `LLM_API_KEY`: `<your-api-key>`
-   - `LLM_MODEL`: `gemini-1.5-flash` or `claude-3-5-sonnet-20241022`
+   - `LLM_PROVIDER`: `groq` | `gemini` | `anthropic` | `mock` (Defaults to `mock` / Demo mode)
+   - `LLM_API_KEY`: Groq, Google AI Studio, or Anthropic API key
+   - `LLM_MODEL`: `llama-3.3-70b-versatile`, `gemini-1.5-flash`, or `claude-3-5-sonnet-20241022`
 4. Click **Deploy**. If no API key is provided, the app runs flawlessly in **Demo mode** with zero error screens.

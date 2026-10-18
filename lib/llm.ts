@@ -160,7 +160,7 @@ one-line brief, the brand name, and RELATIONSHIP: paid | gifted | barter | unkno
 - If asked to remove the disclosure, decline in one sentence and explain it protects her.
 Output JSON: { "captions": string[], "note": string }`;
 
-// 4. Provider Call Helper (Anthropic & Gemini support)
+// 4. Provider Call Helper (Groq, Anthropic & Gemini support)
 async function callLLM(systemPrompt: string, userPrompt: string): Promise<string | null> {
   const provider = (process.env.LLM_PROVIDER || 'mock').toLowerCase();
   const apiKey = process.env.LLM_API_KEY;
@@ -171,6 +171,30 @@ async function callLLM(systemPrompt: string, userPrompt: string): Promise<string
   }
 
   try {
+    if (provider === 'groq') {
+      const selectedModel = model || 'llama-3.3-70b-versatile';
+      const response = await fetch('https://api.groq.com/openai/v1/chat/completions', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+          'Authorization': `Bearer ${apiKey}`,
+        },
+        body: JSON.stringify({
+          model: selectedModel,
+          messages: [
+            { role: 'system', content: systemPrompt },
+            { role: 'user', content: userPrompt },
+          ],
+          temperature: 0.2,
+          response_format: { type: 'json_object' },
+        }),
+      });
+
+      if (!response.ok) return null;
+      const data = await response.json();
+      return data.choices?.[0]?.message?.content || null;
+    }
+
     if (provider === 'gemini') {
       const selectedModel = model || 'gemini-1.5-flash';
       const url = `https://generativelanguage.googleapis.com/v1beta/models/${selectedModel}:generateContent?key=${apiKey}`;
